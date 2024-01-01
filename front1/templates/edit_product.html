@@ -1,0 +1,236 @@
+{% extends "F_home.html" %}
+{% load static %}
+
+ {% block header %}
+<head>
+
+	<!-- title -->
+
+	<!-- favicon -->
+	<!-- google font -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="{% static 'assetsfrutica/css/all.min.css' %}">
+	<!-- bootstrap -->
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{% static 'assetsfrutica/css/owl.carousel.css' %}">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="{% static 'assetsfrutica/css/magnific-popup.css' %}">
+	<!-- animate css -->
+	<link rel="stylesheet" href="{% static 'assetsfrutica/css/animate.css' %}">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="{% static 'assetsfrutica/css/meanmenu.min.css' %}">
+	<!-- main style -->
+	<link rel="stylesheet" href="{% static 'assetsfrutica/css/main.css' %}">
+	<!-- responsive -->
+	<link rel="stylesheet" href="{% static 'assetsfrutica/css/responsive.css' %}">
+
+</head>
+<body>
+
+	<div class="checkout-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="checkout-accordion-wrap">
+						<div class="accordion" id="accordionExample">
+						  <div class="card single-accordion">
+						    <div class="card-header" id="headingOne">
+						      <h5 class="mb-0">
+						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						          Edit Listing
+						        </button>
+						      </h5>
+						    </div>
+
+						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+						      <div class="card-body">
+						        <div class="billing-address-form">
+									<form method="post" action="{% url 'categoryupdatee' dataid=catt.id %}" enctype="multipart/form-data">
+                {% csrf_token %}
+
+    <p>
+        <select class="form-control" name="category" id="input-1">
+            <option>{{ catt.P_cata }}</option>
+            {% for i in data %}
+                <option>{{ i.A_categoryname }}</option>
+            {% endfor %}
+        </select>
+    </p>
+    <p><input name="item_name" value="{{ catt.P_name }}" type="text" placeholder="Name"></p>
+    <p><input name="quantity" value="{{ catt.P_quantity }}" type="text" placeholder="Quantity"></p>
+    <p><input name="mobile" value="{{ catt.P_number }}" type="tel" placeholder="Mobile"></p>
+    <p><input name="Location" value="{{ catt.P_location }}" type="text" placeholder="Location"></p>
+    <p><input name="price" value="{{ catt.P_price }}" type="number" placeholder="Price"></p>
+    <p><input name="description" value="{{ catt.P_description }}" type="text" placeholder="Description"></p>
+    <p><input name="sdescription" value="{{ catt.P_sdescription }}" type="text" placeholder="Short Description"></p>
+    <p><input name="spopname" value="{{ catt.P_shopname }}" type="text" placeholder="Shop Name"></p>
+    <p><input name="local" value="{{ catt.P_localarea }}" type="text" placeholder="Local Area"></p>
+
+    <p>
+        <input name="image1" type="file" placeholder="Image">
+        <img src="{{ catt.P_image1.url }}" height="50px" width="50px">
+    </p>
+    <p>
+        <input name="image2" type="file" placeholder="Image">
+        <img src="{{ catt.P_image2.url }}" height="50px" width="50px">
+    </p>
+    <p>
+        <input name="image3" type="file" placeholder="Image">
+        <img src="{{ catt.P_image3.url }}" height="50px" width="50px">
+    </p>
+
+    <button type="submit"  class="boxed-btn"><i class="fas fa-shopping-cart"></i> Save Changes</button>
+</form>
+
+						        </div>
+
+
+
+
+						       </div>
+						    </div>
+						  </div>
+<!--						  <div class="card single-accordion">-->
+<!--						    <div class="card-header" id="headingTwo">-->
+<!--						      <h5 class="mb-0">-->
+<!--						        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">-->
+<!--						          Shipping Address-->
+<!--						        </button>-->
+<!--						      </h5>-->
+<!--						    </div>-->
+<!--						    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">-->
+<!--						      <div class="card-body">-->
+<!--						        <div class="shipping-address-form">-->
+<!--						        	<p>Your shipping address form is here.</p>-->
+<!--						        </div>-->
+<!--						      </div>-->
+<!--						    </div>-->
+<!--						  </div>-->
+<!--						  <div class="card single-accordion">-->
+<!--						    <div class="card-header" id="headingThree">-->
+<!--						      <h5 class="mb-0">-->
+<!--						        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">-->
+<!--						          Card Details-->
+<!--						        </button>-->
+<!--						      </h5>-->
+<!--						    </div>-->
+<!--						    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">-->
+<!--						      <div class="card-body">-->
+<!--						        <div class="card-details">-->
+<!--						        	<p>Your card details goes here.</p>-->
+<!--						        </div>-->
+<!--						      </div>-->
+<!--						    </div>-->
+<!--						  </div>-->
+						</div>
+
+					</div>
+				</div>
+
+<!--				<div class="col-lg-4">-->
+<!--					<div class="order-details-wrap">-->
+<!--						<table class="order-details">-->
+<!--							<thead>-->
+<!--								<tr>-->
+<!--									<th>Your order Details</th>-->
+<!--									<th>Price</th>-->
+<!--								</tr>-->
+<!--							</thead>-->
+<!--							<tbody class="order-details-body">-->
+<!--							{% for i in data %}-->
+<!--								<tr>-->
+<!--									<td>{{i.ProductName}}</td>-->
+<!--									<td>{{i.Total}}</td>-->
+<!--								</tr>-->
+<!--							{% endfor %}-->
+<!--							<tr>-->
+<!--									<td>Total</td>-->
+<!--									<td>{{totalprice}}</td>-->
+<!--								</tr>-->
+<!--							</tbody>-->
+<!--						</table>-->
+<!--						<button class="btn"><a class="boxed-btn"><i class="fas fa-shopping-cart"></i> Place Order</a></button>-->
+<!--					</div>-->
+
+<!--					</div>-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- header -->
+	<!-- end header -->
+
+	<!-- search area -->
+	<!-- end search arewa -->
+
+	<!-- breadcrumb-section -->
+<!--	<div class="breadcrumb-section breadcrumb-bg">-->
+<!--		<div class="container">-->
+<!--			<div class="row">-->
+<!--				<div class="col-lg-8 offset-lg-2 text-center">-->
+<!--					<div class="breadcrumb-text">-->
+<!--							<p>See more Details</p>-->
+<!--						<h1>Single Product</h1>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+	<!-- end breadcrumb section -->
+
+	<!-- single product -->
+
+	<!-- end single product -->
+
+	<!-- more products -->
+	<!-- end more products -->
+
+	<!-- logo carousel -->
+	<!-- end logo carousel -->
+
+
+<div id="map" style="height:300px; "></div>
+
+<script src="{% static 'my/js/image.js' %}"></script>
+
+	<!-- jquery -->
+	<script src="{% static 'assetsfrutica/js/jquery-1.11.3.min.js' %}"></script>
+	<!-- bootstrap -->
+	<script src="{% static 'assetsfrutica/bootstrap/js/bootstrap.min.js' %}"></script>
+	<!-- count down -->
+	<script src="{% static 'assetsfrutica/js/jquery.countdown.js' %}"></script>
+	<!-- isotope -->
+	<script src="{% static 'assetsfrutica/js/jquery.isotope-3.0.6.min.js' %}"></script>
+	<!-- waypoints -->
+	<script src="{% static 'assetsfrutica/js/waypoints.js' %}"></script>
+	<!-- owl carousel -->
+	<script src="{% static 'assetsfrutica/js/owl.carousel.min.js' %}"></script>
+	<!-- magnific popup -->
+	<script src="{% static 'assetsfrutica/js/jquery.magnific-popup.min.js' %}"></script>
+	<!-- mean menu -->
+	<script src="{% static 'assetsfrutica/js/jquery.meanmenu.min.js' %}"></script>
+	<!-- sticker js -->
+	<script src="{% static 'assetsfrutica/js/sticker.js' %}"></script>
+	<!-- main js -->
+	<script src="{% static 'assetsfruticap/js/main.js' %}"></script>
+	<script src="https://code.jquery.com/jquery-3.7.0.js" ></script>
+	<script>
+        $(document).ready(function(){
+        $("#Qty").change(function(){
+        x=document.getElementById("Qty").value;
+        y=document.getElementById("Price").value;
+        result=x*y;
+        document.getElementById("Total").value=result;
+    })
+})
+
+    </script>
+
+</body>
+{% endblock %}

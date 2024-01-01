@@ -1,0 +1,80 @@
+ <div class="col-lg-12">
+         <div class="card">
+           <div class="card-body">
+           <div class="card-title">EDIT CATEGORY</div>
+           <hr>
+            <form method="post"action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+            <label for="input-1">Category</label>
+                    <input type="text" name="categoryname" class="form-control" value="{{data.A_categoryname}}" id="input-1" placeholder="Enter Category Name">
+           </div>
+                <div class="form-group">
+            <label for="input-3">Description</label>
+            <textarea class="form-control" name="description" id="input-3" placeholder="Enter Product Description">{{data.A_description}}</textarea>
+           </div>
+                <div class="form-group">
+            <label for="input-5">Upload Image</label>
+            <input type="file" name="image"   class="form-control" id="input-5">
+                    <img src="{{data.A_image.url}}" height="50px" width="50px">
+           </div>
+           <div class="form-group">
+            <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i>Submit</button>
+          </div>
+          </form>
+         </div>
+         </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'darkasset/js/jquery.min.js' %}"></script>
+  <script src="{% static 'darkasset/js/popper.min.js' %}"></script>
+  <script src="{% static 'darkasset/js/bootstrap.min.js' %}"></script>
+
+ <!-- simplebar js -->
+  <script src="{% static 'darkasset/plugins/simplebar/js/simplebar.js' %}"></script>
+  <!-- sidebar-menu js -->
+  <script src="{% static 'darkasset/js/sidebar-menu.js' %}"></script>
+  <!-- loader scripts -->
+  <script src="{% static 'darkasset/js/jquery.loading-indicator.js' %}"></script>
+  <!-- Custom scripts -->
+  <script src="{% static 'darkasset/js/app-script.js' %}"></script>
+  <!-- Chart js -->
+  <script src="{% static 'darkasset/plugins/Chart.js/Chart.min.js' %}"></script>
+  <!-- Index js -->
+  <script src="{% static 'darkasset/js/index.js' %}"></script>
+
+    {% if messages %}
+      {% for i in messages %}
+           {% if i.tags == 'warning' %}
+               <script>
+                    swal('{{i}}','','warning');
+               </script>
+           {% elif i.tags == 'error' %}
+               <script>
+                    swal('{{i}}','','error');
+               </script>
+           {% else %}
+               <script>
+                    swal('{{i}}','','success');
+               </script>
+           {% endif %}
+        {% endfor %}
+    {% endif %}
+ </div>
+
+    {% for doctor in doctors %}
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<img src="{{doctor.P_image1.url}}" height="50px" width="50px">
+              </div>
+
+              <div class="media-body p-2 mt-3">
+                  <a href=""><h3 class="heading">{{doctor.P_name}}</h3></a>
+              </div>
+
+            </div>
+          </div>
+            {% endfor %}

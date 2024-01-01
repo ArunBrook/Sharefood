@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends 'back_home.html' %}
+
+ <!--Start Dashboard Content-->
+{% block content %}
+
+            <div class="card-body">
+           <div class="card-title">Vertical Form</div>
+           <hr>
+            <form method="post" action="{% url 'categorysave' %}"  enctype="multipart/form-data">
+                {% csrf_token %}
+           <div class="form-group">
+
+            <label for="input-1">Name</label>
+
+            <input type="text" required class="form-control" name="name" id="input-1" placeholder="Category Name">
+           </div>
+           <div class="form-group">
+            <label for="input-2">Description</label>
+            <input type="text" class="form-control" required name="description"id="input-2" placeholder="Description">
+           </div>
+           <div class="form-group">
+            <label for="input-3">image</label>
+            <input type="file" class="form-control" required name="image" id="input-3"placeholder="Model Image">
+           </div>
+
+
+           <div class="form-group py-2">
+             <div class="icheck-material-white">
+            <input type="checkbox" id="user-checkbox1" checked="">
+
+            <label for="user-checkbox1">I Agree Terms &amp; Conditions</label>
+            </div>
+           </div>
+           <div class="form-group">
+            <button type="submit" class="btn btn-light px-5"> ADD</button>
+          </div>
+          </form>
+         </div>
+
+
+
+
+
+
+        {% endblock %}
